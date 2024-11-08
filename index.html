@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Moedas</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css/css/flag-icon.min.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <img src="./img/logoooo-removebg-preview.png" alt="Logo">
+        </div>
+        <div class="horarios">
+            <div class="cidade">
+                <p>São Paulo:</p>
+                <p id="hora-sp"></p>
+            </div>
+            <div class="cidade">
+                <p>Nova York:</p>
+                <p id="hora-ny"></p>
+            </div>
+            <div class="cidade">
+                <p>Tóquio:</p>
+                <p id="hora-tokyo"></p>
+            </div>
+            <div class="cidade">
+                <p>Berlim:</p>
+                <p id="hora-berlin"></p>
+            </div>
+        </div>
+        <div>
+            <button class="btn_enter" id="btnEntrar">Entrar</button>
+            <button class="btn_cct" id="btnCriarConta">Criar Conta</button>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <div class="converter_box">
+                <div class="campo_quantia">
+                    <label for="quantia">Quantia</label>
+                    <input type="text" id="quantia" placeholder="00,00">
+                </div>
+                <div class="converter_box_arrow">→</div>
+                <div class="campo_convert_to">
+                    <label for="convertTo">Converter para</label>
+                    <input type="text" id="convertTo" placeholder="00,00" disabled>
+                </div>
+                <div>
+                    <label for="moedaOrigem">Moeda de Origem:</label>
+                    <select id="moedaOrigem">
+                        <option value="USD"><span class="flag-icon flag-icon-us"></span> USD</option>
+                        <option value="EUR"><span class="flag-icon flag-icon-eu"></span> EUR</option>
+                        <option value="JPY"><span class="flag-icon flag-icon-jp"></span> JPY</option>
+                        <option value="GBP"><span class="flag-icon flag-icon-gb"></span> GBP</option>
+                        <option value="BRL"><span class="flag-icon flag-icon-br"></span> BRL</option>
+                        <option value="AUD"><span class="flag-icon flag-icon-au"></span> AUD</option>
+                        <option value="CAD"><span class="flag-icon flag-icon-ca"></span> CAD</option>
+                        <option value="CHF"><span class="flag-icon flag-icon-ch"></span> CHF</option>
+                        <option value="CNY"><span class="flag-icon flag-icon-cn"></span> CNY</option>
+                        <option value="ARS"><span class="flag-icon flag-icon-ar"></span> ARS</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="moedaDestino">Moeda de Destino:</label>
+                    <select id="moedaDestino">
+                        <option value="USD"><span class="flag-icon flag-icon-us"></span> USD</option>
+                        <option value="EUR"><span class="flag-icon flag-icon-eu"></span> EUR</option>
+                        <option value="JPY"><span class="flag-icon flag-icon-jp"></span> JPY</option>
+                        <option value="GBP"><span class="flag-icon flag-icon-gb"></span> GBP</option>
+                        <option value="BRL"><span class="flag-icon flag-icon-br"></span> BRL</option>
+                        <option value="AUD"><span class="flag-icon flag-icon-au"></span> AUD</option>
+                        <option value="CAD"><span class="flag-icon flag-icon-ca"></span> CAD</option>
+                        <option value="CHF"><span class="flag-icon flag-icon-ch"></span> CHF</option>
+                        <option value="CNY"><span class="flag-icon flag-icon-cn"></span> CNY</option>
+                        <option value="ARS"><span class="flag-icon flag-icon-ar"></span> ARS</option>
+                    </select>
+                </div>        
+                <button class="btn_converter">Converter</button>
+            </div>
+            <div class="Area_grafico">
+                <h3>Histórico da Moeda</h3>
+                <div class="Area_grafico">
+                    <canvas id="myChart"></canvas>
+                </div>
+                
+            </div>
+            <div class="Area_moedas">
+                <h3>Lugares onde aceitam essa moeda</h3>
+                <ul id="listaLugares"></ul> 
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>2024 &copy; Conversor VIGCOINS</p>
+    </footer>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span id="closeLogin" class="close">&times;</span>
+            <h2>Entrar</h2>
+            <input type="text" placeholder="Usuário">
+            <input type="password" placeholder="Senha">
+            <button class="btn_modal">Entrar</button>
+            <a href="#">Esqueceu a senha?</a>
+        </div>
+    </div>
+
+    <div id="criarContaModal" class="modal">
+        <div class="modal-content">
+            <span id="closeCriarConta" class="close">&times;</span>
+            <h2>Criar Conta</h2>
+            <input type="text" placeholder="Usuário">
+            <input type="password" placeholder="Senha">
+            <button class="btn_modal">Criar Conta</button>
+        </div>
+    </div>
+    <script src="./scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,463 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F0F4F8;
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.cabecalho {
+    background-color: #2b4c7e;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.horarios {
+    display: flex;
+    gap: 15px;
+    color: #fff;
+}
+
+.cidade {
+    text-align: center;
+}
+
+.btn_enter, .btn_cct {
+    background-color: #66CCFF;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn_enter:hover, .btn_cct:hover {
+    transform: scale(1.1);
+    background-color: #004080;
+    animation: piscar 0.5s infinite;
+}
+
+@keyframes piscar {
+    0% { background-color: #66CCFF; }
+    50% { background-color: #004080; }
+    100% { background-color: #66CCFF; }
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.converter_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    gap: 10px;
+}
+
+.campo_quantia, .campo_convert_to {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn_converter {
+    background-color: #66CCFF;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.Area_grafico, .Area_moedas {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: #2b4c7e;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+    .cabecalho {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .horarios {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .btn_enter, .btn_cct {
+        padding: 8px 15px;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .converter_box {
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px;
+    }
+
+    .Area_grafico, .Area_moedas {
+        padding: 15px;
+    }
+
+    .container {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo img {
+        height: 30px;
+    }
+
+    .cabecalho {
+        padding: 5px;
+    }
+
+    .horarios {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn_enter, .btn_cct {
+        font-size: 12px;
+        padding: 7px 12px;
+    }
+
+    .converter_box {
+        padding: 10px;
+    }
+
+    .converter_box_arrow {
+        display: none;
+    }
+
+    .Area_grafico, .Area_moedas {
+        padding: 10px;
+    }
+
+    footer {
+        font-size: 12px;
+        padding: 10px;
+    }
+}
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #2b4c7e;
+}
+
+.modal input {
+    width: 100%;
+    max-width: 350px; 
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.modal input:focus {
+    outline: none;
+    border-color: #66CCFF;
+}
+
+.modal .btn_modal {
+    background-color: #66CCFF;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    max-width: 350px; 
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.modal .btn_modal:hover {
+    background-color: #2b4c7e; 
+}
+
+.modal .close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 25px;
+    color: #2b4c7e; 
+    cursor: pointer;
+}
+
+.modal a {
+    color: #2b4c7e; 
+    text-decoration: none;
+    margin-top: 15px;
+    display: inline-block;
+}
+
+.modal a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .modal h2 {
+        font-size: 22px;
+    }
+}
+
+.campo_moeda, .campo_convert_to {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #2b4c7e;
+}
+
+
+.btn_enter, .btn_cct, .btn_converter {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#myChart {
+    width: 300px;
+    height: 150px; 
+}
+#myChart {
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+}
+
+.Area_moedas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 400px; 
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); 
+}
+
+/* Estilo do balão de chat */
+.chat-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 50%;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Janela de chat */
+.chat-window {
+    position: fixed;
+    bottom: 70px;
+    left: 20px;
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo das mensagens */
+.user-message, .bot-message {
+    margin: 5px;
+    padding: 8px;
+    border-radius: 8px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.user-message {
+    background-color: #e1f5fe;
+    align-self: flex-end;
+}
+
+.bot-message {
+    background-color: #f1f1f1;
+}
+
+/* Botões de resposta rápida */
+.quick-reply {
+    display: block;
+    background-color: #f8f9fa;
+    border: none;
+    margin: 3px;
+    padding: 5px;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+}
+
+.quick-reply:hover {
+    background-color: #e9ecef;
+}
+
+select {
+    padding: 5px;
+    font-size: 16px;
+    margin-top: 5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+select img {
+    width: 20px;
+    height: 15px;
+    margin-right: 5px;
+}
